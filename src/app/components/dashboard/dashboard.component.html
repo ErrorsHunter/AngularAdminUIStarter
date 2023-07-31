@@ -1,0 +1,104 @@
+<h1 class="mt-4">Dashboard</h1>
+<small class="text-dark"><i class="fa fa-cogs"></i> Stay updated with official notices, news, and announcements related
+    to the company.</small>
+
+
+
+
+<div class="row">
+    <div class="col">
+        <main>
+            <ul class="o-vertical-spacing o-vertical-spacing--l">
+
+                <li class="blog-post o-media" *ngIf="noticeList.length == 0">
+                    <div class="o-media__figure">
+                        <span class="skeleton-box" style="width:100px;height:80px;"></span>
+                    </div>
+                    <div class="o-media__body">
+                        <div class="o-vertical-spacing">
+                            <h3 class="blog-post__headline">
+                                <span class="skeleton-box" style="width:55%;"></span>
+                            </h3>
+                            <p>
+                                <span class="skeleton-box" style="width:80%;"></span>
+                                <span class="skeleton-box" style="width:90%;"></span>
+                                <span class="skeleton-box" style="width:83%;"></span>
+                            </p>
+                            <div class="blog-post__meta">
+                                <span class="skeleton-box" style="width:70px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="blog-post o-media" *ngIf="noticeList.length == 0">
+                    <div class="o-media__figure">
+                        <span class="skeleton-box" style="width:100px;height:80px;"></span>
+                    </div>
+                    <div class="o-media__body">
+                        <div class="o-vertical-spacing">
+                            <h3 class="blog-post__headline">
+                                <span class="skeleton-box" style="width:55%;"></span>
+                            </h3>
+                            <p>
+                                <span class="skeleton-box" style="width:80%;"></span>
+                                <span class="skeleton-box" style="width:90%;"></span>
+                                <span class="skeleton-box" style="width:83%;"></span>
+                            </p>
+                            <div class="blog-post__meta">
+                                <span class="skeleton-box" style="width:70px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+                <aside *ngIf="noticeList.length > 0">
+                    <li class="blog-post o-media mb-5"
+                        *ngFor="let notice of noticeList | paginate: { itemsPerPage: 5, currentPage: pageNo };let i = index">
+                        <div class="o-media__figure ">
+                            <span class="text-center c-px-3" style="width:100px;height:80px;">
+                                <span class="rounded-circle-c bg-dark text-white p-3">{{(pageNo - 1) * 5 + i +
+                                    1}}</span>
+                            </span>
+                        </div>
+                        <div class="o-media__body">
+                            <div class="o-vertical-spacing">
+                                <h3 class="blog-post__headline">
+                                    <span style="width:55%;">{{notice.title}}</span>
+                                </h3>
+                                <p>
+                                    <span style="width:80%;">{{notice.description}}</span>
+                                </p>
+                                <div class="blog-post__meta ">
+                                    <span style="width:70px;" class="bg-green px-2 py-1 text-white">{{notice.createdon |
+                                        date : "dd-MMM-YYYY hh:mm a"}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="blog-post o-media mb-5 px-4" *ngIf="noticeList.length > 10">
+                        <div class="w-100 text-end my-1">
+                            <pagination-controls (pageChange)="pageNo = $event"></pagination-controls>
+                        </div>
+                    </li>
+
+                </aside>
+
+
+            </ul>
+        </main>
+
+    </div>
+</div>
+
+<!-- <div class="row mt-4">
+        <h1>Notice Page Under Construction</h1>
+        <div class="alert alert-info" role="alert">
+            <small class="text-dark"><i class="fa fa-cogs"></i> We are currently working on this page. Please check back later!</small>
+          </div>
+      
+    
+    </div> -->

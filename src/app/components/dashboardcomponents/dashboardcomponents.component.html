@@ -1,0 +1,93 @@
+<h1 class="mt-4">Dashboard</h1>
+<small class="text-dark"><i class="fa fa-cogs"></i> Stay updated with official notices, news, and announcements related
+    to the company.</small>
+
+
+
+
+<section class="row key-metrics px-2 my-4">
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 p-2 mx-auto">
+        <div class="card bg-blue text-center py-2 text-white shadow">
+            <span class="pb-2">Pending</span>
+            <hr class="border border-2 border-white">
+            <h3 class="key-metrics-number">0</h3>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 p-2 mx-auto ">
+        <div class="card bg-yellow text-center py-2 text-dark shadow">
+            <span class="pb-2">InProgress</span>
+            <hr class="border border-2 border-dark">
+            <h3 class="key-metrics-number">0</h3>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 p-2 mx-auto">
+        <div class="card bg-green text-center py-2 text-white shadow">
+            <span class="pb-2">Completed</span>
+            <hr class="border border-2 border-white">
+            <h3 class="key-metrics-number">0</h3>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 p-2 mx-auto">
+        <div class="card bg-red text-center py-2 text-white shadow">
+            <span class="pb-2">Rejected</span>
+            <hr class="border border-2 border-white">
+            <h3 class="key-metrics-number">0</h3>
+        </div>
+    </div>
+</section>
+
+
+<section class="my-4 py-4">
+    <form class="row px-1 d-flex justify-content-between">
+
+        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 mb-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <input type="text" class="form-control" id="searchinput" name="searchKeyword"
+                    [(ngModel)]="searchKeyword" placeholder="Search.....">
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 col-xl-3 mb-3 text-end">
+            <button class="btn btn-dark w-auto px-3">
+                <i class="fas fa-plus pe-3"></i>Some Action
+            </button>
+        </div>
+    </form>
+    <div class="row px-1 row-cols-1">
+        <div class="col table-responsive">
+            <table class="table table-bordered request-table">
+                <thead>
+                    <tr class="text-nowrap">
+                        <th>Sl no.</th>
+                        <th>Col 1</th>
+                        <th class="text-center" style="width:  25.33% !important;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let request of requestList | filter : searchKeyword | paginate: { itemsPerPage: 5, currentPage: pageNo }; let i = index;">
+                        <td class="align-middle">{{(pageNo - 1) * 10 + i + 1}}</td>
+                        <td class="text-center">
+                            <button class=" btn btn-dark px-2 mx-2 my-1">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-pen-nib me-2"></i>
+                                    <small>Edit</small>
+                                </div>
+                            </button>
+                            <button class="btn btn-danger px-2 mx-2 my-1">
+                                <div class="d-flex align-items-center">
+                                    <small class="me-2">Cancel</small>
+                                    <i class="fas fa-xmark"></i>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col text-end my-1">
+            <pagination-controls (pageChange)="pageNo = $event"></pagination-controls>
+        </div>
+    </div>
+</section>

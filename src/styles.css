@@ -1,0 +1,429 @@
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,tbody {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+p,
+label,
+span,
+div,
+a,thead {
+  font-family: 'Poppins', sans-serif !important;
+  text-decoration: none;
+}
+
+#layoutAuthentication {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#layoutAuthentication #layoutAuthentication_content {
+  min-width: 0;
+  flex-grow: 1;
+}
+
+#layoutAuthentication #layoutAuthentication_footer {
+  min-width: 0;
+}
+
+#layoutSidenav {
+  display: flex;
+}
+
+#layoutSidenav #layoutSidenav_nav {
+  flex-basis: 225px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease-in-out;
+  z-index: 1038;
+  transform: translateX(-225px);
+}
+
+#layoutSidenav #layoutSidenav_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  flex-grow: 1;
+  min-height: calc(100vh - 56px);
+  margin-left: -225px;
+}
+
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+  transform: translateX(0);
+}
+
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
+  /* content: "";  */
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1037;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@media (min-width: 992px) {
+  #layoutSidenav #layoutSidenav_nav {
+    transform: translateX(0);
+  }
+
+  #layoutSidenav #layoutSidenav_content {
+    margin-left: 0;
+    transition: margin 0.15s ease-in-out;
+  }
+
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+    transform: translateX(-225px);
+  }
+
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
+    margin-left: -225px;
+  }
+
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
+    display: none;
+  }
+}
+
+.sb-nav-fixed .sb-topnav {
+  z-index: 1039 !important;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+  width: 225px;
+  height: 100vh !important;
+  z-index: 1038;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav {
+  padding-top: 56px;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
+  overflow-y: auto !important;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_content {
+  padding-left: 225px;
+  top: 56px;
+}
+
+#layoutError {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#layoutError #layoutError_content {
+  min-width: 0;
+  flex-grow: 1;
+}
+
+#layoutError #layoutError_footer {
+  min-width: 0;
+}
+
+.img-error {
+  max-width: 20rem;
+}
+
+.nav .nav-link .sb-nav-link-icon,
+.sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  margin-right: 0.5rem;
+}
+
+.sb-topnav {
+  padding-left: 0;
+  height: 56px;
+  z-index: 1039;
+}
+
+.sb-topnav .navbar-brand {
+  width: 225px;
+  margin: 0;
+}
+
+.sb-topnav.navbar-dark #sidebarToggle {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sb-topnav.navbar-light #sidebarToggle {
+  color: #212529;
+}
+
+.sb-sidenav {
+  display: flex;
+  flex-direction: column;
+  height: 100% !important;
+  flex-wrap: nowrap;
+}
+
+.sb-sidenav .sb-sidenav-menu {
+  flex-grow: 1;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav {
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
+  padding: 1.75rem 1rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link {
+  display: flex;
+  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
+  font-size: 0.9rem;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
+  display: inline-block;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
+  transform: rotate(-90deg);
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
+  margin-left: 1.5rem;
+  flex-direction: column;
+}
+
+.sb-sidenav .sb-sidenav-footer {
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.sb-sidenav-dark {
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+  color: #fff;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+  color: #fff;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+  color: #fff;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer {
+  background-color: #343a40;
+}
+
+.fixed-top,
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav,
+.sb-nav-fixed .sb-topnav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+/*datepicker*/
+.bs-datepicker-head {
+  background-color: #5aaaff !important;
+  text-align: center !important;
+  min-width: 270px !important;
+  height: 40px !important;
+  padding: 5px !important;
+}
+.bs-datepicker-body {
+  padding: 0px !important;
+  min-height: 145px !important;
+  min-width: 270px !important;
+}
+  .bs-datepicker-body table td span {
+    font-size: 15px !important;
+    border-radius: 20% !important;
+  }
+
+.bs-datepicker-head button.next span, .bs-datepicker-head button.previous span {
+ font-size: 50px !important;
+ line-height: .32 !important;
+}
+
+.bs-datepicker-head button.current {
+ border-radius: 15px !important;
+ max-width: 205px !important;
+ padding: 0px 44px !important;
+}
+
+.bs-datepicker-container {
+  padding: 0px !important;
+}
+
+.bs-datepicker-body table.months td {
+  height: 35px !important;
+}
+.bs-datepicker-body table.months td span {
+  padding: 5px !important;
+  border-radius: 10px !important;
+}
+.bs-datepicker-body table.years td span {
+  width: 46px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+}
+.bs-datepicker-body table.years tr:not(:last-child) td span {
+  margin-bottom: 0px !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+
+
+/* For Colors https://clrs.cc/ */
+
+
+.bg-navy { background-color: #001F3F !important; }
+.bg-blue { background-color: #0074D9 !important; }
+.bg-aqua { background-color: #7FDBFF !important; }
+.bg-teal { background-color: #39CCCC !important; }
+.bg-olive { background-color: #3D9970 !important; }
+.bg-green { background-color: #2ECC40 !important; }
+.bg-lime { background-color: #01FF70 !important; }
+.bg-yellow { background-color: #FFDC00 !important; }
+.bg-orange { background-color: #FF851B !important; }
+.bg-red { background-color: #FF4136 !important; }
+.bg-fuchsia { background-color: #F012BE !important; }
+.bg-purple { background-color: #B10DC9 !important; }
+.bg-maroon { background-color: #85144B !important; }
+.bg-white { background-color: #FFFFFF !important; }
+.bg-gray { background-color: #AAAAAA !important; }
+.bg-silver { background-color: #DDDDDD !important; }
+.bg-black { background-color: #111111 !important; }
+/* Colors */
+.navy { color: #001F3F !important; }
+.blue { color: #0074D9 !important; }
+.aqua { color: #7FDBFF !important; }
+.teal { color: #39CCCC !important; }
+.olive { color: #3D9970 !important; }
+.green { color: #2ECC40 !important; }
+.lime { color: #01FF70 !important; }
+.yellow { color: #FFDC00 !important; }
+.orange { color: #FF851B !important; }
+.red { color: #FF4136 !important; }
+.fuchsia { color: #F012BE !important; }
+.purple { color: #B10DC9 !important; }
+.maroon { color: #85144B !important; }
+.white { color: #FFFFFF !important; }
+.silver { color: #DDDDDD !important; }
+.gray { color: #AAAAAA !important; }
+.black { color: #111111 !important; }
+/* Border colors 
+
+   Use with another border utility that sets border-width and style 
+   i.e .border { border-width: 1px); border-style: solid); }     
+*/
+.border--navy { border-color: #001F3F !important; }
+.border--blue { border-color: #0074D9 !important; }
+.border--aqua { border-color: #7FDBFF !important; }
+.border--teal { border-color: #39CCCC !important; }
+.border--olive { border-color: #3D9970 !important; }
+.border--green { border-color: #2ECC40 !important; }
+.border--lime { border-color: #01FF70 !important; }
+.border--yellow { border-color: #FFDC00 !important; }
+.border--orange { border-color: #FF851B !important; }
+.border--red { border-color: #FF4136 !important; }
+.border--fuchsia { border-color: #F012BE !important; }
+.border--purple { border-color: #B10DC9 !important; }
+.border--maroon { border-color: #85144B !important; }
+.border--white { border-color: #FFFFFF !important; }
+.border--gray { border-color: #AAAAAA !important; }
+.border--silver { border-color: #DDDDDD !important; }
+.border--black { border-color: #111111 !important; }
+/* Fills for SVG */
+.fill-navy { fill: #001F3F !important; }
+.fill-blue { fill: #0074D9 !important; }
+.fill-aqua { fill: #7FDBFF !important; }
+.fill-teal { fill: #39CCCC !important; }
+.fill-olive { fill: #3D9970 !important; }
+.fill-green { fill: #2ECC40 !important; }
+.fill-lime { fill: #01FF70 !important; }
+.fill-yellow { fill: #FFDC00 !important; }
+.fill-orange { fill: #FF851B !important; }
+.fill-red { fill: #FF4136 !important; }
+.fill-fuchsia { fill: #F012BE !important; }
+.fill-purple { fill: #B10DC9 !important; }
+.fill-maroon { fill: #85144B !important; }
+.fill-white { fill: #FFFFFF !important; }
+.fill-gray { fill: #AAAAAA !important; }
+.fill-silver { fill: #DDDDDD !important; }
+.fill-black { fill: #111111 !important; }
+/* Strokes for SVG */
+.stroke-navy { stroke: #001F3F !important; }
+.stroke-blue { stroke: #0074D9 !important; }
+.stroke-aqua { stroke: #7FDBFF !important; }
+.stroke-teal { stroke: #39CCCC !important; }
+.stroke-olive { stroke: #3D9970 !important; }
+.stroke-green { stroke: #2ECC40 !important; }
+.stroke-lime { stroke: #01FF70 !important; }
+.stroke-yellow { stroke: #FFDC00 !important; }
+.stroke-orange { stroke: #FF851B !important; }
+.stroke-red { stroke: #FF4136 !important; }
+.stroke-fuchsia { stroke: #F012BE !important; }
+.stroke-purple { stroke: #B10DC9 !important; }
+.stroke-maroon { stroke: #85144B !important; }
+.stroke-white { stroke: #FFFFFF !important; }
+.stroke-gray { stroke: #AAAAAA !important; }
+.stroke-silver { stroke: #DDDDDD !important; }
+.stroke-black { stroke: #111111 !important; }
+
+

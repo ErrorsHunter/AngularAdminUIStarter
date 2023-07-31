@@ -1,0 +1,99 @@
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+
+}
+
+/* Original style for the button */
+/* Original style for the button */
+.login-register-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.login-register-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.validate {
+  cursor: pointer;
+}
+
+.validate:hover {
+  background-color: rgb(44, 109, 230) !important;
+  color: white;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Center the OTP digits within the input field */
+.otp-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make the input fields wider to accommodate each digit */
+.otp-input input {
+  width: 2rem;
+  margin: 0 0.3rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.step-info {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  padding-left: 0.5rem;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #8c99a1;
+  color: #fff;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.step-label {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.step-sublabel {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
+
+.step-item.active .step-number {
+  background-color: #28a745;
+}
+
+.step-item.active .step-label {
+  color: #28a745;
+}

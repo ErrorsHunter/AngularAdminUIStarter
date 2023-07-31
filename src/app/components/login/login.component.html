@@ -1,0 +1,198 @@
+<section class="container">
+  <aside class="row mt-4">
+    <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-xl-4 mx-auto">
+      <div class="card text-center p-4 gap-2 mx-auto shadow">
+        <main class="my-2">
+          <div class="card w-25 mx-auto p-2 my-2 mt-4 text-center rounded-circle text-center">
+            <!-- <img src=""> -->
+           <i class="fa fa-3x fa-check-circle"></i>
+          </div>
+          <h4 class="mx-auto mb-0 text-uppercase">Admin UI</h4>
+          <span class="mx-auto mb-5 text-primary">Welcome to a Admin UI</span>
+        </main>
+        <div class="row text-white gap-2 mt-2 px-2 mb-4">
+          <div role="button" class="col py-2 rounded-start login-register-btn"
+            (click)="registerForm.reset();isLoginScreen= true"
+            [ngClass]="isLoginScreen ? 'bg-success' : 'bg-secondary' ">Login</div>
+          <div role="button" class="col py-2 rounded-end login-register-btn"
+            (click)="loginForm.reset();isLoginScreen= false"
+            [ngClass]="!isLoginScreen ? 'bg-success' : 'bg-secondary' ">Register</div>
+        </div>
+
+        <div class="row">
+          <div class="col" *ngIf="isLoginScreen">
+            <div class="row">
+              <div class="col">
+                <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+                  <div class="col-md-12">
+                    <label for="inputEmail4" class="form-label d-flex">Registered Phone Number
+                      <span class="text-danger"> *</span>
+                    </label>
+                    <input type="text" formControlName="mobilenumber" class="form-control" id="registerationId"
+                      minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                    <div *ngIf="loginForm.get('mobilenumber')?.invalid && loginForm.get('mobilenumber')?.touched"
+                      class="alert alert-danger mt-2 p-2">
+                      <div *ngIf="loginForm.get('mobilenumber')?.errors?.['required']; else elseBlock_mobilenumber"><i
+                          class="fa fa-phone" aria-hidden="true" style="font-size: 13px;"></i> Phone number is required.
+                      </div>
+                      <!-- <div *ngIf="loginForm.get('mobilenumber')?.hasError('pattern')">Please,
+                                                Enter 10 digit Mobile Number</div> -->
+                    </div>
+                    <ng-template #elseBlock_mobilenumber>
+                      Please enter 10 digit phone number.
+                    </ng-template>
+                  </div>
+                  <div class="col-md-12">
+                    <label for="inputPassword4" class="form-label d-flex">Password
+                      <span class="text-danger">*</span>
+
+                    </label>
+                    <div class="input-group">
+                      <input type="{{ fieldTextType ? 'password' : 'text' }}" formControlName="password"
+                        class="form-control" id="password" />
+                      <span class="input-group-text" (click)="toggleFieldTextType()" style="cursor: pointer;">
+                        <i class="fa" [ngClass]="{
+                                                'fa-eye-slash': !fieldTextType,
+                                                'fa-eye': fieldTextType
+                                              }"></i>
+                      </span>
+                    </div>
+
+                    <div
+                      *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                      class="alert alert-danger mt-2 p-2">
+                      <div *ngIf="loginForm.get('password')?.errors?.['required']">Please enter a
+                        valid password.</div>
+                      <div *ngIf="loginForm.get('password')?.hasError('pattern')">Password should
+                        contain at least 8 characters, one uppercase letter, one lowercase
+                        letter, one digit, and one special character.</div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary w-100">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" *ngIf="!isLoginScreen">
+            <div class="col mb-3">
+              <div class="stepper">
+                <div [class.active]="currentStep === 1" class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-info">
+                    <div class="step-label">STEP 1</div>
+                    <div class="step-sublabel">Contact</div>
+                  </div>
+                </div>
+                <div [class.active]="currentStep === 2" class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-info">
+                    <div class="step-label">STEP 2</div>
+                    <div class="step-sublabel">OTP</div>
+                  </div>
+                </div>
+                <div [class.active]="currentStep === 3" class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-info">
+                    <div class="step-label">STEP 3</div>
+                    <div class="step-sublabel">Password</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row optField justify-content-center mx-0" *ngIf="currentStep==2">
+              <div class="col-md-10">
+                <form>
+                  <div class="form-group">
+                    <label for="otpInput" class="my-2">Enter OTP:</label><br>
+                    <small class="text-muted" style="font-size: 12px;">We sent an OTP to :
+                      <!--{{registerForm.mobilenumber}}--></small>
+                    <div class="otp-input my-2">
+                      <!-- Add a separate input field for each digit of the OTP -->
+                      <input type="text" class="form-control" id="otp1" maxlength="1" pattern="\d" required>
+                      <input type="text" class="form-control" id="otp2" maxlength="1" pattern="\d" required>
+                      <input type="text" class="form-control" id="otp3" maxlength="1" pattern="\d" required>
+                      <input type="text" class="form-control" id="otp4" maxlength="1" pattern="\d" required>
+                      <!-- Add more input fields if your OTP has more digits -->
+                    </div>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary w-100" (click)=" currentStep = currentStep + 1">Continue</button>
+                  </div>
+                </form>
+                <small>Didn't recieved an OTP? <a hrf="#">Click to re-send</a></small>
+              </div>
+            </div>
+
+           
+
+            <!-- <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="Register(registerForm)"> -->
+            <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="Register(registerForm)">
+              <div class="phoneField" *ngIf="currentStep==1">
+                <div class="col-md-12">
+                  <label for="mobileNumber" class="form-label d-flex">Phone Number
+                    <span class="text-danger"> *</span>
+                  </label>
+                  <div class="input-group">
+                    <input type="text" formControlName="mobileNumber" #mobileNumber class="form-control"
+                      id="mobileNumber" minlength="10" maxlength="10">
+                    <span class="input-group-text validate">
+                      <i class="fa fa-paper-plane" (click)="getConsumerDetailsByPhone();"
+                        aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <div
+                    *ngIf="registerForm.get('mobileNumber')?.invalid && (registerForm.get('mobileNumber')?.dirty || registerForm.get('mobileNumber')?.touched)">
+                  </div>
+                </div>
+                <div class="col-12 mt-4">
+                  <button class="btn btn-primary w-100" (click)="currentStep = currentStep + 1">Continue</button>
+                </div>
+              </div>
+
+              <div class="passwordField" *ngIf="currentStep==3">
+                <div class="col-md-12 form-group">
+                  <label for="password" class="form-label d-flex">Password
+                    <span class="text-danger">*</span>
+
+                  </label>
+                  <input type="password" class="form-control" formControlName="password" id="password"
+                    title="please enter your password" />
+                </div>
+                <div class="col-md-12 form-group">
+                  <label for="reTypePassword" class="form-label d-flex">Re-enter Password
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                    <input type="{{ fieldTextType ? 'password' : 'text' }}" class="form-control"
+                      formControlName="reTypePassword" id="reTypePassword" />
+                    <span class="input-group-text cursor-pointer" (click)="toggleFieldTextType()">
+                      <i class="fa" [ngClass]="{
+                                                'fa-eye-slash': !fieldTextType,
+                                                'fa-eye': fieldTextType
+                                              }"></i>
+                    </span>
+                  </div>
+                  <div class="alert alert-danger mt-2 p-2"
+                    *ngIf="registerForm.get('reTypePassword')?.dirty && !validatePasswords()">
+                    Password does not match
+                  </div>
+                </div>
+                <!-- <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary w-100">Register</button>
+                </div> -->
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary w-100"
+                    [disabled]="registerForm.invalid">Register</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
